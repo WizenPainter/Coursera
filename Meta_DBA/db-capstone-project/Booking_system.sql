@@ -53,3 +53,47 @@ DROP Procedure AddValidBooking;
 
 CALL AddValidBooking("2022-12-17",6);
 SELECT * FROM Bookings;
+
+/*New Stored procedure used to add new data to the bookings table*/
+DELIMITER //
+CREATE PROCEDURE AddBooking(IN bookID INT, custID INT, bookDate DATE, bookTable INT)
+BEGIN
+	INSERT INTO Bookings (BookingID, CustomerID, Date, TableNo) VALUES (bookId, custID, bookDate, booktable);
+    SELECT CONCAT("New booking added");
+END//
+DELIMITER ;
+
+CALL AddBooking(9, 3, "2022-12-30", 4);
+
+/*
+Stored procedure that updates a booking. This procedure takes in the booking id and the date. This procedure updates the
+date of the booking.
+*/
+DELIMITER //
+CREATE PROCEDURE UpdateBooking(IN bookID INT, IN bookDate DATE)
+	BEGIN
+		UPDATE Bookings
+			SET Date = bookDate
+            WHERE BookingID = bookID;
+		SELECT CONCAT("Booking ", bookID, " has been updated.");
+	END //
+DELIMITER ;
+
+CALL UpdateBooking(9, "2022-12-17");
+-- SELECT * FROM Bookings;
+
+/*
+Stored Procedure used to cancel bookings by deleting them. The procedure thakes in the booking id to identify which
+booking to cancel.
+*/
+DELIMITER //
+CREATE PROCEDURE CancelBooking(IN bookID INT)
+	BEGIN
+		DELETE FROM Bookings WHERE BookingID = bookID;
+        SELECT CONCAT("Booking ", bookID, " cancelled.");
+    END //
+DELIMITER ;
+
+CALL CancelBooking(9);
+-- SELECT * FROM Bookings;
+
