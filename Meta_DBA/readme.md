@@ -5,3 +5,4 @@ This project is for the 8th course in META's Database Administrator Professional
 ## ER Diagram
 
 This diagram is a representation of how the database is structured. There might be more than one ER diagram to represent the different business sectors. The diagram shall be developed in MySQL Workbench and implemented utilizing the Forward Engineer function.
+~
